@@ -1,6 +1,6 @@
-// https://www.youtube.com/channel/UCaXI2PcsTlH5g0et67kdD6g  //
+
 //  Stone Paper Scissor Game //
-// By MOHD SOHAIL //
+
 
 #include<LiquidCrystal.h>
 #include  <Servo.h>
