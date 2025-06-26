@@ -18,12 +18,12 @@ This project is a physical version of the classic **Rock-Paper-Scissors** game, 
 - The result is displayed using the **LED display**.
 - Game logic is implemented using Arduino IDE.
 - 
-- ## Getting Started
-1. Clone or download this repository.
-2. Open the `.ino` file in **Arduino IDE**.
-3. Connect the components as per the code.
-4. Upload the sketch to your **Arduino Nano**.
-5. Power up the board and start playing.
+## Getting Started
+- Clone or download this repository.-
+- Open the `.ino` file in **Arduino IDE**.
+- Connect the components as per the code.
+- Upload the sketch to your **Arduino Nano**.
+- Power up the board and start playing.
 
 
 
