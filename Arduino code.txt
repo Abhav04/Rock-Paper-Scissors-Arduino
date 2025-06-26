@@ -1,0 +1,112 @@
+// https://www.youtube.com/channel/UCaXI2PcsTlH5g0et67kdD6g  //
+//  Stone Paper Scissor Game //
+// By MOHD SOHAIL //
+
+#include<LiquidCrystal.h>
+#include  <Servo.h>
+
+LiquidCrystal lcd(A0,A1,A2,A3,A4,A5);
+volatile long A;
+
+float  checkdistance_11_10() 
+{
+digitalWrite(11, LOW);
+delayMicroseconds(2);
+digitalWrite(11,  HIGH);
+delayMicroseconds(10);
+digitalWrite(11, LOW);
+float distance = pulseIn(10,  HIGH) / 58.00;
+delay(10);
+return distance;
+}
+
+Servo servo_3;
+Servo  servo_6;
+Servo servo_9;
+
+int red1 = 2;
+int red2 = 4;
+int red3 = 5;
+int  speaker = 12;
+
+void setup()
+{
+ lcd.begin(16,2);
+ lcd.setCursor(0,0);
+  lcd.print(" Rock Paper and ");
+ lcd.setCursor(0,1);
+ lcd.print(" Scissor  Game ");
+ delay(4000);
+ lcd.clear();
+ 
+A = 0;
+pinMode(11, OUTPUT);
+pinMode(10,  INPUT);
+pinMode(12, OUTPUT);
+pinMode(red1, OUTPUT);
+pinMode(red2, OUTPUT);
+pinMode(red3,  OUTPUT);
+servo_3.attach(3);    // stone
+servo_6.attach(6);    // paper
+servo_9.attach(9);     // scissor
+servo_3.write(179);
+servo_6.write(179);
+servo_9.write(179);
+}
+
+void  loop()
+{
+if (checkdistance_11_10() < 10) {
+A = random(0, 4);
+switch  (A) {
+case 1:
+tone(12,131);
+delay(100);
+noTone(12);
+servo_3.write(120);
+  lcd.setCursor(0,0);
+ lcd.print(" It's....");
+ lcd.setCursor(0,1);
+ lcd.print("      Stone....");
+ digitalWrite(red1, HIGH);
+delay(1000);
+servo_3.write(179);
+digitalWrite(red1,  LOW);
+lcd.clear();
+delay(500);
+break;
+case 2:
+tone(12,131);
+delay(100);
+noTone(12);
+servo_6.write(120);
+lcd.setCursor(0,0);
+  lcd.print(" It's....");
+ lcd.setCursor(0,1);
+ lcd.print("      Paper....");
+  digitalWrite(red2, HIGH);
+delay(1000);
+servo_6.write(179);
+digitalWrite(red2,  LOW);
+lcd.clear();
+delay(500);
+break;
+case 3:
+tone(12,131);
+delay(100);
+noTone(12);
+servo_9.write(120);
+lcd.setCursor(0,0);
+  lcd.print(" It's....");
+ lcd.setCursor(0,1);
+ lcd.print("     Scissor....");
+  digitalWrite(red3, HIGH);
+delay(1000);
+servo_9.write(179);
+digitalWrite(red3,  LOW);
+lcd.clear();
+delay(500);
+break;
+}
+}
+}
